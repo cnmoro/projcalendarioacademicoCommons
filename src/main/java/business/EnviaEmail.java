@@ -21,6 +21,7 @@ public class EnviaEmail {
     private final EntityManager manager;
     private final Object operationLock;
     public final static long DUAS_HORAS = 2 * 60 * 60 * 1000L;
+    public final static long DOIS_DIAS = 48 * 60 * 60 * 1000L;
     public final static long UM_DIA = 24 * 60 * 60 * 1000L;
 
     public EnviaEmail(EntityManager manager, Object operationLock) {
@@ -109,4 +110,5 @@ public class EnviaEmail {
             }
         }
     }
+    
 }
