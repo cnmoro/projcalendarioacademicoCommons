@@ -19,7 +19,7 @@ public class AcessoBanco {
 
     private final EntityManager manager;
     private final Object operationLock;
-    public final static long DOIS_DIAS = 48 * 60 * 60 * 1000L;
+    public long DOIS_DIAS = 48 * 60 * 60 * 1000L;
     
     public AcessoBanco(EntityManager manager, Object operationLock) {
         this.manager = manager;
