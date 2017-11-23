@@ -99,7 +99,7 @@ public class AcessoBanco {
     public void removeUsuario(Usuario u) {
         synchronized (this.operationLock) {
             this.manager.getTransaction().begin();
-            this.manager.remove(this.manager.createNamedQuery("Usuario.findById").setParameter("id", u.getId()));
+            this.manager.remove(getUsuarioById(u.getId()));
             this.manager.getTransaction().commit();
         }
     }
@@ -113,6 +113,12 @@ public class AcessoBanco {
     public List<Evento> getEventosByAutor(String autor) {
         synchronized (this.operationLock) {
             return this.manager.createNamedQuery("Evento.findByAutor").setParameter("autor", autor).getResultList();
+        }
+    }
+    
+    public Evento getEventoById(int id) {
+        synchronized (this.operationLock) {
+            return (Evento) this.manager.createNamedQuery("Evento.findById").setParameter("id", id).getSingleResult();
         }
     }
     
@@ -135,7 +141,7 @@ public class AcessoBanco {
     public void removeEvento(Evento e) {
         synchronized (this.operationLock) {
             this.manager.getTransaction().begin();
-            this.manager.remove(this.manager.createNamedQuery("Evento.findById").setParameter("id", e.getId()));
+            this.manager.remove(getEventoById(e.getId()));
             this.manager.getTransaction().commit();
         }
     }
@@ -177,7 +183,7 @@ public class AcessoBanco {
     public void removeReuniao(Reuniaoprofessor rp) {
         synchronized (this.operationLock) {
             this.manager.getTransaction().begin();
-            this.manager.remove(this.manager.createNamedQuery("Reuniaoprofessor.findById").setParameter("id", rp.getId()));
+            this.manager.remove(getReuniaoById(rp.getId()));
             this.manager.getTransaction().commit();
         }
     }
