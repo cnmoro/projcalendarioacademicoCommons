@@ -1,6 +1,6 @@
 package business;
 
-import Utils.EManager;
+import utils.EManager;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,9 +20,9 @@ public class EnviaEmail {
     
     private final EntityManager manager;
     private final Object operationLock;
-    public final static long DUAS_HORAS = 2 * 60 * 60 * 1000L;
-    public final static long DOIS_DIAS = 48 * 60 * 60 * 1000L;
-    public final static long UM_DIA = 24 * 60 * 60 * 1000L;
+    public long DUAS_HORAS = 2 * 60 * 60 * 1000L;
+    public long DOIS_DIAS = 48 * 60 * 60 * 1000L;
+    public long UM_DIA = 24 * 60 * 60 * 1000L;
 
     public EnviaEmail(EntityManager manager, Object operationLock) {
         this.manager = manager;
