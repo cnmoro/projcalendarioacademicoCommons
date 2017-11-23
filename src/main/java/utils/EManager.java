@@ -1,7 +1,7 @@
 package Utils;
 
 import business.EnviaEmail;
-import database.DatabaseAccessor;
+import database.AcessoBanco;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
@@ -17,7 +17,7 @@ public class EManager implements java.io.Serializable{
     private final EntityManager em;
 
     private final Object operationLock = new Object();
-    private final DatabaseAccessor databaseAccessor;
+    private final AcessoBanco databaseAccessor;
     private final EnviaEmail enviaEmailAccessor;
     
     public static EManager getInstance() {
@@ -33,11 +33,11 @@ public class EManager implements java.io.Serializable{
 
     private EManager() {
         this.em = Persistence.createEntityManagerFactory("CalendarioPU").createEntityManager();
-        this.databaseAccessor = new DatabaseAccessor(this.em, this.operationLock);
+        this.databaseAccessor = new AcessoBanco(this.em, this.operationLock);
         this.enviaEmailAccessor = new EnviaEmail(this.em, operationLock);
     }
 
-    public DatabaseAccessor getDatabaseAccessor() {
+    public AcessoBanco getDatabaseAccessor() {
         return databaseAccessor;
     }
 
